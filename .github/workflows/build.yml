@@ -1,0 +1,59 @@
+name: Build and test
+on:
+  pull_request:
+
+concurrency:
+  group: build-${{ github.head_ref || 'develop' }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
+jobs:
+  ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Setup Flutter env
+        uses: ./.github/actions/setup-flutter-project
+
+      - name: Build binary
+        run: |
+          flutter build ipa --no-codesign
+
+  android:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Setup JDK
+        uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+        with:
+          distribution: zulu
+          java-version: 17
+      - name: Setup Flutter env
+        uses: ./.github/actions/setup-flutter-project
+      - name: Build binary
+        run: |
+          flutter build appbundle --debug # --release is better
+
+  test:
+    # Align the environment for taking screenshots with the development environment.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Setup Flutter env
+        uses: ./.github/actions/setup-flutter-project
+      - name: Linter
+        run: flutter analyze
+      # - name: Run tests
+      #   run: flutter test --machine > report.json
+      # - name: Test Report
+      #   uses: dorny/test-reporter@dc3a92680fcc15842eef52e8c4606ea7ce6bd3f3 # v2.1.1
+      #   if: always()
+      #   with:
+      #     name: flutter test
+      #     path: report.json
+      #     reporter: flutter-json
+      #     fail-on-error: false

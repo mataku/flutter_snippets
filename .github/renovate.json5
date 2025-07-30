@@ -1,0 +1,83 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+  ],
+  timezone: 'Asia/Tokyo',
+  schedule: [
+    'after 3pm on Friday',
+    'before 5pm on Friday',
+  ],
+  rangeStrategy: 'replaced',
+  rebaseWhen: 'conflicted',
+  packageRules: [
+    {
+      groupName: 'envied',
+      matchPackageNames: [
+        'envied',
+        'envied_generator',
+      ],
+      automerge: true,
+      platformAutomerge: true,
+    },
+    {
+      groupName: 'freezed',
+      matchPackageNames: [
+        'freezed',
+        'freezed_annotation',
+      ],
+      automerge: true,
+      platformAutomerge: true,
+    },
+    {
+      matchUpdateTypes: [
+        'patch',
+        'minor',
+      ],
+      groupName: 'dart_pub',
+      automerge: true,
+      platformAutomerge: true,
+      matchManagers: [
+        'pub',
+      ],
+    },
+    {
+      matchUpdateTypes: [
+        'major',
+        'patch',
+        'minor',
+      ],
+      groupName: 'GitHub Actions',
+      matchManagers: [
+        'github-actions',
+      ],
+      automerge: true,
+      platformAutomerge: true,
+    },
+    {
+      matchUpdateTypes: [
+        'patch',
+        'minor',
+      ],
+      groupName: 'fvm',
+      matchManagers: [
+        'fvm',
+      ],
+      automerge: true,
+      platformAutomerge: true,
+    },
+  ],
+  enabledManagers: [
+    'github-actions',
+    'pub',
+    'fvm'
+  ],
+  lockFileMaintenance: {
+    enabled: true,
+    automerge: true,
+    platformAutomerge: true,
+    schedule: [
+      'after 3pm and before 5pm on Friday',
+    ],
+  },
+}
