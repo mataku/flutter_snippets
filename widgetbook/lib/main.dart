@@ -14,9 +14,11 @@ class WidgetbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final targetDevices = [Viewports.none, IosViewports.iPhone13];
     return Widgetbook.material(
       directories: directories,
       themeMode: ThemeMode.light,
+      addons: [ViewportAddon(targetDevices)],
     );
   }
 }
