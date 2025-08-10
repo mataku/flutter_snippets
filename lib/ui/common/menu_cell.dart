@@ -19,6 +19,10 @@ class MenuCell extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       subtitle: Text(
         description,

@@ -15,6 +15,7 @@ com_crashlytics_export_strings.xml
 .signing/
 
 # User-specific configurations
+.idea
 **/.idea/libraries/
 **/.idea/workspace.xml
 **/.idea/tasks.xml
@@ -39,7 +40,8 @@ com_crashlytics_export_strings.xml
 **/.idea/migrations.xml
 **/.idea/androidTestResultsUserPreferences.xml
 **/.idea/deploymentTargetDropDown.xml
-**/.idea/runConfigurations
+**/.idea/runConfigurations.xml
+**/.idea/AndroidProjectSystem.xml
 **/.idea/copilot/
 **/.idea/deploymentTargetSelector.xml
 **/.idea/other.xml
