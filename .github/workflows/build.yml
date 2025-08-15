@@ -16,6 +16,9 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      # Setup iOS 18.0
+      - name: Setup Xcode version
+        run: sudo xcode-select -s '/Applications/Xcode_16.4.app/Contents/Developer'
       - name: Setup Flutter env
         uses: ./.github/actions/setup-flutter-project
 
@@ -27,6 +30,9 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      # Setup iOS 18.0
+      - name: Setup Xcode version
+        run: sudo xcode-select -s '/Applications/Xcode_16.4.app/Contents/Developer'
       - name: Setup JDK
         uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
         with:
@@ -43,6 +49,9 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      # Setup iOS 18.0
+      - name: Setup Xcode version
+        run: sudo xcode-select -s '/Applications/Xcode_16.4.app/Contents/Developer'
       - name: Setup Flutter env
         uses: ./.github/actions/setup-flutter-project
       - name: Linter
