@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_snippets/feature/camera/camera_screen.dart';
 import 'package:flutter_snippets/feature/hooks/hooks_screen.dart';
 import 'package:flutter_snippets/ui/screen/home_screen.dart';
-import 'package:flutter_snippets/ui/screen/widget_rotation_screen.dart';
+import 'package:flutter_snippets/feature/widget_rotation/widget_rotation_screen.dart';
 import 'package:go_router/go_router.dart';
 
 part 'router.g.dart';
